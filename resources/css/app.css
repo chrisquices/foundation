@@ -1,0 +1,260 @@
+@import 'tailwindcss';
+
+@import 'tw-animate-css';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-sans: Instrument Sans, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    /* ─── Base / Text ─────────────────────────── */
+    --color-text: var(--text);
+    --color-text-foreground: var(--text-foreground);
+    --color-text-muted: var(--text-muted);
+
+    /* ─── Surfaces ────────────────────────────── */
+    --color-background: var(--background);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-input-foreground: var(--input-foreground);
+    --color-sidebar-background: var(--sidebar-background);
+
+    /* ─── Semantic Colors ─────────────────────── */
+    --color-primary: var(--primary);
+    --color-primary-border: var(--primary-border);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-border: var(--secondary-border);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-border: var(--accent-border);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-restorative: var(--restorative);
+    --color-restorative-border: var(--restorative-border);
+    --color-restorative-foreground: var(--restorative-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-border: var(--destructive-border);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-warning: var(--warning);
+    --color-warning-border: var(--warning-border);
+    --color-warning-foreground: var(--warning-foreground);
+
+    --color-info: var(--info);
+    --color-info-border: var(--info-border);
+    --color-info-foreground: var(--info-foreground);
+
+    /* ─── UI Accents / Misc ───────────────────── */
+    --color-hover: var(--hover);
+    --color-tooltip-background: var(--tooltip-background);
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+@layer utilities {
+    body,
+    html {
+        --font-sans:
+            'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
+            'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+            'Noto Color Emoji';
+    }
+}
+
+:root {
+    --radius: 0.5rem;
+
+    /* ─── Base / Text ─────────────────────────── */
+    --text: hsl(217, 33%, 17%);
+    --text-foreground: hsl(217, 33%, 17%);
+    --text-muted: hsl(215, 16%, 47%);
+
+    /* ─── Surfaces ────────────────────────────── */
+    --background: hsl(210, 40%, 96%);
+    --card: hsl(0, 0%, 100%);
+    --card-foreground: hsl(214, 32%, 91%);
+    --border: hsl(214, 32%, 91%);
+    --input: hsl(210, 40%, 98%);
+    --input-foreground: hsl(210, 40%, 96%);
+    --sidebar-background: hsl(210, 40%, 98%);
+
+    /* ─── Semantic Colors ─────────────────────── */
+    --primary: hsl(199, 89%, 48%);
+    --primary-border: hsl(200, 98%, 39%);
+    --primary-foreground: hsl(204, 100%, 97%);
+
+    --secondary: hsl(210, 40%, 98%);
+    --secondary-border: hsl(213, 27%, 84%);
+    --secondary-foreground: hsl(217, 33%, 17%);
+
+    --accent: hsl(199, 89%, 48%);
+    --accent-border: hsl(200, 98%, 39%);
+    --accent-foreground: hsl(204, 100%, 97%);
+
+    --restorative: hsl(160, 84%, 39%);
+    --restorative-border: hsl(161, 94%, 30%);
+    --restorative-foreground: hsl(149, 80%, 90%);
+
+    --destructive: hsl(0, 84%, 60%);
+    --destructive-border: hsl(0, 72%, 51%);
+    --destructive-foreground: hsl(0, 93%, 94%);
+
+    --warning: hsl(45, 93%, 47%);
+    --warning-border: hsl(41, 96%, 40%);
+    --warning-foreground: hsl(55, 97%, 88%);
+
+    --info: hsl(258, 90%, 66%);
+    --info-border: hsl(262, 83%, 58%);
+    --info-foreground: hsl(251, 91%, 95%);
+
+    /* ─── UI Accents / Misc ───────────────────── */
+    --hover: hsla(199, 89%, 48%, 0.1);
+    --tooltip-background: hsl(210, 40%, 98%);;
+}
+
+.dark {
+    /* ─── Base / Text ─────────────────────────── */
+    --text: hsl(214, 21%, 79%);
+    --text-foreground: hsl(0, 0%, 13%);
+    --text-muted: hsl(215, 14%, 34%);
+
+    /* ─── Surfaces ────────────────────────────── */
+    --background: hsl(222, 47%, 11%);
+    --card: hsl(229, 84%, 5%);
+    --card-foreground: hsl(240, 6%, 10%);
+    --border: hsl(215, 25%, 27%);
+    --input: hsl(229, 84%, 5%);
+    --input-foreground: hsl(222, 47%, 11%);
+    --sidebar-background: hsl(229, 84%, 5%);
+
+    /* ─── Semantic Colors ─────────────────────── */
+    --primary: hsl(200, 98%, 39%);
+    --primary-border: hsl(201, 96%, 32%);
+    --primary-foreground: hsl(204, 100%, 97%);
+
+    --secondary: hsl(229, 84%, 5%);
+    --secondary-border: hsl(225, 100%, 2%);
+    --secondary-foreground: hsl(214, 21%, 79%);
+
+    --accent: hsl(200, 98%, 39%);
+    --accent-border: hsl(201, 96%, 32%);
+    --accent-foreground: hsl(204, 100%, 97%);
+
+    --restorative: hsl(161, 94%, 30%);
+    --restorative-border: hsl(163, 94%, 24%);
+    --restorative-foreground: hsl(149, 80%, 90%);
+
+    --destructive: hsl(0, 72%, 51%);
+    --destructive-border: hsl(0, 74%, 42%);
+    --destructive-foreground: hsl(0, 93%, 94%);
+
+    --warning: hsl(41, 96%, 40%);
+    --warning-border: hsl(35, 92%, 33%);
+    --warning-foreground: hsl(55, 97%, 88%);
+
+    --info: hsl(262, 83%, 58%);
+    --info-border: hsl(263, 70%, 50%);
+    --info-foreground: hsl(251, 91%, 95%);
+
+    /* ─── UI Accents / Misc ───────────────────── */
+    --hover: hsla(199, 89%, 48%, 0.1);
+    --tooltip-background: hsl(229, 84%, 5%);
+}
+
+/* Global Scrollbars */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) transparent;
+}
+
+*::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--primary);
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary);
+}
+
+/* Sonner Toast */
+[data-sonner-toast] {
+    @apply !bg-card !text-text !border-none !text-base;
+}
+
+[data-sonner-toast] {
+    display: flex !important;
+    align-items: center !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
+
+[data-sonner-toast] [data-content] {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 0.5rem !important;
+}
+
+[data-sonner-toast] [data-icon] {
+    margin: 0 4px 0 0 !important;
+    flex-shrink: 0 !important;
+}
+
+[data-sonner-toast][data-type='success'] {
+    @apply !text-restorative;
+}
+
+[data-sonner-toast][data-type='error'] {
+    @apply !text-destructive;
+}
+
+/* Floating Vue */
+.v-popper__inner {
+    @apply !bg-card !text-sm !text-text !rounded-lg;
+}
+
+/* Select */
+ul[data-select-list] > li {
+    @apply m-1 px-2 hover:bg-hover rounded-md duration-100;
+}
