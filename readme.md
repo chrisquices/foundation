@@ -6,8 +6,7 @@
 <h1 align="center">Foundation</h1>
 
 <p align="center">
-    A modern Laravel-based web application built with elegant simplicity and developer productivity in mind.<br />
-    Fully powered by <strong>Laravel</strong>, <strong>Livewire</strong>, <strong>Bootstrap</strong>, and <strong>jQuery</strong>.
+    Laravel starter kit with built-in auth, users, roles, permissions, and a handcrafted UI. No external UI libraries required.<br />
     <br />
     <br />
     <a href="https://laravel.com">
